@@ -1,0 +1,143 @@
+# FAST NEWS BLOG
+
+The Blog API was built using postgres, sequelize and express, it allows users to perform various actions, including user authentication, blog posting, and liking blog posts. The API is secured using rate limiting and API keys.
+
+## Table of Contents
+
+- [Authentication](#authentication)
+- [API Keys](#api-keys)
+- [Endpoints](#endpoints)
+  - [User Signup](#user-signup)
+  - [User Login](#user-login)
+  - [Create a Blog Post](#create-a-blog-post)
+  - [Like a Blog Post](#like-a-blog-post)
+
+## Authentication
+
+To use this API, users need to be authenticated. Authentication is required for actions like creating a blog post and liking a blog post.
+
+## API Keys
+
+API keys are used to authenticate and authorize requests. Each user is provided with an API key upon signup. The API key should be included in the request headers for secured endpoints.
+
+### Request Headers
+
+```json
+Authorization: Bearer YOUR_API_KEY
+```
+
+## Endpoints
+
+### User Signup
+
+- **URL:** `/api/signup`
+- **Method:** `POST`
+- **Description:** Allows users to sign up for the service.
+- **Request Body:**
+
+```json
+{
+  "username": "exampleuser",
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+- **Response:**
+
+```json
+{
+  "message": "User created successfully",
+  "user": {
+    "id": 1,
+    "username": "exampleuser",
+    "email": "user@example.com"
+  }
+}
+```
+
+### User Login
+
+- **URL:** `/api/login`
+- **Method:** `POST`
+- **Description:** Allows users to login.
+- **Request Body:**
+
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+- **Response:**
+
+```json
+{
+  "message": "Login successful",
+  "user": {
+    "id": 1,
+    "username": "exampleuser",
+    "email": "user@example.com"
+  },
+  "token": "YOUR_ACCESS_TOKEN"
+}
+```
+
+### Create a Blog Post
+
+- **URL:** `/api/post`
+- **Method:** `POST`
+- **Description:** Allows users to create a post.
+- **Request Body:**
+
+```json
+{
+  "title": "New Blog Post",
+  "content": "This is the content of the blog post."
+}
+```
+
+- **Response:**
+
+```json
+{
+  "message": "Blog post created successfully",
+  "post": {
+    "id": 1,
+    "title": "New Blog Post",
+    "content": "This is the content of the blog post.",
+    "author": {
+      "id": 1,
+      "username": "exampleuser"
+    }
+  }
+}
+```
+
+### Like a Blog Post
+
+- **URL:** `/api/posts/:postId/like`
+- **Method:** `POST`
+- **Description:** Allows authenticated users to like a specific blog post.
+- **Response:**
+
+```json
+{
+  "message": "Liked the blog post successfully"
+}
+```
+
+## Rate Limiting
+
+Rate limiting is applied to prevent abuse and ensure fair usage of the API. Users are limited to a certain number of requests per minute.
+
+## Contributions
+
+Contributions are welcome! If you find any issues or want to add new features, feel free to submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Thank you for checking out this CRUD API with PostgreSQL! If you have any questions or feedback, please don't hesitate to contact me.
