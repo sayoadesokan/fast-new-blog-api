@@ -19,5 +19,6 @@ module.exports = (sequelize) => {
       timestamps: true,
     }
   );
+  ContactInfo.belongsTo(models.User);
   return ContactInfo;
 };

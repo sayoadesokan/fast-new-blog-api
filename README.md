@@ -22,7 +22,7 @@ API keys are used to authenticate and authorize requests. Each user is provided 
 
 ### Request Headers
 
-```json
+```bash
 Authorization: Bearer YOUR_API_KEY
 ```
 

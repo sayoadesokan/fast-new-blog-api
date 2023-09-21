@@ -3,6 +3,7 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const helmet = require('helmet');
 const userRouter = require('../routes/user-route');
+const contactRouter = require('../routes/contactinfo-routes');
 
 module.exports = async (app) => {
   app.use(express.json());
@@ -24,4 +25,5 @@ module.exports = async (app) => {
   app.use(apiRequestLimiter);
 
   app.use('/v1/user', userRouter);
+  app.use('/v1/contact', contactRouter);
 };

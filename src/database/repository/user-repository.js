@@ -30,6 +30,7 @@ class UserRepository {
         lastName,
         email,
         password: hashPassword,
+        salt,
       });
       return user;
     } catch (error) {

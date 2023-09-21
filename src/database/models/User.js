@@ -27,11 +27,27 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      salt: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
     {
       timestamps: true,
     }
   );
+  User.hasOne(models.ContactInfo, {
+    foriegnKey: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
+  });
 
+  User.hasMany(models.BlogPost, {
+    foriegnKey: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
+  });
   return User;
 };

@@ -19,3 +19,21 @@ module.exports.createUser = async (req, res, next) => {
     throw new Error('Unable to create User');
   }
 };
+
+module.exports.signUp = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const user = await service.signUp({
+      email,
+      password,
+    });
+    return res.status(200).json({
+      message: 'Success!',
+      data: user.user,
+      token: user.token,
+    });
+  } catch (error) {
+    console.log(error);
+    throw new Error('Unable to create User');
+  }
+};
