@@ -61,6 +61,17 @@ class UserService {
       throw new Error('Unable to create user!');
     }
   }
+
+  async followUser(userInput) {
+    try {
+      const { firstName, UserId } = userInput;
+      const user = await this.repository.followUser({ firstName, UserId });
+      return user;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Unable to create user!');
+    }
+  }
 }
 
 module.exports = UserService;

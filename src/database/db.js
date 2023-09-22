@@ -5,6 +5,7 @@ const {
   POSTGRES_USER,
   POSTGRES_PASSWORD,
 } = require('../config');
+const { associations } = require('./models/Associations');
 
 const sequelize = new Sequelize(
   POSTGRES_DATABASE,
@@ -18,6 +19,8 @@ const sequelize = new Sequelize(
 
 const connection = async () => {
   try {
+    associations(sequelize);
+    console.log('associations created!');
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
     await sequelize.sync({ alter: true });

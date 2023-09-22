@@ -24,7 +24,7 @@ class UserRepository {
 
   async createUser(userInput) {
     try {
-      const { firstName, lastName, email, hashPassword } = userInput;
+      const { firstName, lastName, email, hashPassword, salt } = userInput;
       const user = await this.model.User.create({
         firstName,
         lastName,
@@ -36,6 +36,23 @@ class UserRepository {
     } catch (error) {
       console.error(error);
       throw new Error('Unable to save user to the database');
+    }
+  }
+
+  async followUser(userInput) {
+    try {
+      const { firstNam, UserId } = userInput;
+      const currentUser = await this.model.User.findByPk(UserId);
+      const toFollowUser = await this.model.User.findOne({
+        where: {
+          firstNam,
+        },
+      });
+      currentUser.addUser(toFollowUser);
+      return currentUser.getUser();
+    } catch (error) {
+      console.error(error);
+      throw new Error('Unable to follow user');
     }
   }
 }

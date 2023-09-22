@@ -4,6 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const userRouter = require('../routes/user-route');
 const contactRouter = require('../routes/contactinfo-routes');
+const blogRouter = require('../routes/blog-routes');
 
 module.exports = async (app) => {
   app.use(express.json());
@@ -26,4 +27,5 @@ module.exports = async (app) => {
 
   app.use('/v1/user', userRouter);
   app.use('/v1/contact', contactRouter);
+  app.use('/v1/blog', blogRouter);
 };

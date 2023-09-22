@@ -8,12 +8,12 @@ class ContactService {
 
   async registerContact(userInput) {
     try {
-      const { phone } = userInput;
-      const contact = await this.respository.registerContact(phone);
+      const { phone, UserId } = userInput;
+      const contact = await this.respository.registerContact({ phone, UserId });
       return contact;
     } catch (error) {
       console.log(error);
-      throw new Error('Unable to create user!');
+      throw new Error('Unable to create contact!');
     }
   }
 }

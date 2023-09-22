@@ -6,8 +6,8 @@ const app = express();
 
 const startServer = async () => {
   try {
-    await expressApp(app);
     await connection();
+    await expressApp(app);
     app.listen(PORT, () => {
       console.log(`Listening on http://localhost:${PORT}`);
     });

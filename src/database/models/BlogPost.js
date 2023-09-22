@@ -22,6 +22,5 @@ module.exports = (sequelize) => {
       timestamps: true,
     }
   );
-  BlogPost.belongsTo(models.User);
   return BlogPost;
 };

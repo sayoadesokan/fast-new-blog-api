@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const ContactInfo = require('./ContactInfo');
 
 module.exports = (sequelize) => {
   const User = sequelize.define(
@@ -36,18 +37,5 @@ module.exports = (sequelize) => {
       timestamps: true,
     }
   );
-  User.hasOne(models.ContactInfo, {
-    foriegnKey: {
-      type: DataTypes.UUID,
-      allowNull: false,
-    },
-  });
-
-  User.hasMany(models.BlogPost, {
-    foriegnKey: {
-      type: DataTypes.UUID,
-      allowNull: false,
-    },
-  });
   return User;
 };

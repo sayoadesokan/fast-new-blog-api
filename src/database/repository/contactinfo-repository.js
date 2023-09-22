@@ -9,9 +9,10 @@ class ContactRepository {
 
   async registerContact(userInput) {
     try {
-      const { phone } = userInput;
+      const { phone, UserId } = userInput;
       const contact = await this.model.ContactInfo.create({
         phone,
+        UserId,
       });
 
       return contact;
