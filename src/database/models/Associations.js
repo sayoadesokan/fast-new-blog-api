@@ -10,7 +10,7 @@ module.exports.associations = (sequelize) => {
 
   //one-t0-one => hasOne, belongsTo
   user.hasOne(contactInfo, {
-    foriegnKey: {
+    foreignKey: {
       type: DataTypes.UUID,
       allowNull: false,
     },
@@ -19,24 +19,23 @@ module.exports.associations = (sequelize) => {
 
   //one-t0-many => hasOne, belongsTo
   user.hasMany(blogpost, {
-    foriegnKey: {
+    foreignKey: {
       type: DataTypes.UUID,
       allowNull: false,
     },
-    UserId,
   });
   blogpost.belongsTo(user);
 
   //many-to-many => belongsToMany
   user.belongsToMany(user, {
     as: 'User',
-    foriegnKey: 'UserId',
+    foreignKey: 'UserId',
     through: 'Follow',
   });
 
   user.belongsToMany(user, {
     as: 'Followed',
-    foriegnKey: 'FollowedId',
+    foreignKey: 'FollowedId',
     through: 'Follow',
   });
 };

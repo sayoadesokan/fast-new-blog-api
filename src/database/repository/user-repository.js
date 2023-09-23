@@ -41,11 +41,11 @@ class UserRepository {
 
   async followUser(userInput) {
     try {
-      const { firstNam, UserId } = userInput;
+      const { firstName, UserId } = userInput;
       const currentUser = await this.model.User.findByPk(UserId);
       const toFollowUser = await this.model.User.findOne({
         where: {
-          firstNam,
+          firstName,
         },
       });
       currentUser.addUser(toFollowUser);

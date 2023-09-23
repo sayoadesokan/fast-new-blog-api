@@ -30,16 +30,17 @@ Authorization: Bearer YOUR_API_KEY
 
 ### User Signup
 
-- **URL:** `/api/signup`
+- **URL:** `/v1/user/create`
 - **Method:** `POST`
 - **Description:** Allows users to sign up for the service.
 - **Request Body:**
 
 ```json
 {
-  "username": "exampleuser",
-  "email": "user@example.com",
-  "password": "password123"
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "password": "secure_password"
 }
 ```
 
@@ -58,7 +59,7 @@ Authorization: Bearer YOUR_API_KEY
 
 ### User Login
 
-- **URL:** `/api/login`
+- **URL:** `/v1/user/login`
 - **Method:** `POST`
 - **Description:** Allows users to login.
 - **Request Body:**
@@ -86,7 +87,7 @@ Authorization: Bearer YOUR_API_KEY
 
 ### Create a Blog Post
 
-- **URL:** `/api/post`
+- **URL:** `/v1/blog/create`
 - **Method:** `POST`
 - **Description:** Allows users to create a post.
 - **Request Body:**
@@ -94,7 +95,7 @@ Authorization: Bearer YOUR_API_KEY
 ```json
 {
   "title": "New Blog Post",
-  "content": "This is the content of the blog post."
+  "description": "This is the content of the blog post."
 }
 ```
 
@@ -125,6 +126,19 @@ Authorization: Bearer YOUR_API_KEY
 ```json
 {
   "message": "Liked the blog post successfully"
+}
+```
+
+### Follow a User
+
+- **URL:** `/v1/user/follow`
+- **Method:** `POST`
+- **Description:** Follow a user to see his post.
+- **Response:**
+
+```json
+{
+  "firstName": "Jane"
 }
 ```
 
