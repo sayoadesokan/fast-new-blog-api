@@ -11,6 +11,7 @@ The Blog API was built using postgres, sequelize and express, it allows users to
   - [User Login](#user-login)
   - [Create a Blog Post](#create-a-blog-post)
   - [Like a Blog Post](#like-a-blog-post)
+  - [Follow a user](#follow-a-user)
 
 ## Authentication
 
