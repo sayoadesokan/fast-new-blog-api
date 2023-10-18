@@ -1,6 +1,6 @@
 const express = require("express");
-import { body } from "express-validator";
-import { handleInputErrors } from "../middleware/middleware";
+const {body} = require("express-validator");
+const {handleInputErrors} = require("../middleware/middleware");
 const { Authenticate } = require("../middleware/auth");
 const { createBlog } = require("../controller/blog-controller");
 const route = express.Router();
