@@ -25,7 +25,7 @@ module.exports = async (app) => {
   });
   app.use(apiRequestLimiter);
 
-  app.use('/v1/user', userRouter);
+  app.use('/v1/user',  userRouter);
   app.use('/v1/contact', contactRouter);
   app.use('/v1/blog', blogRouter);
 };
