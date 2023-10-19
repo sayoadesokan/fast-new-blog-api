@@ -21,6 +21,16 @@ class BlogService {
       throw new Error('Unable to create a blog!');
     }
   }
+
+  async likeBlogPost({ postId, userId }) {
+    try {
+      const blogPost = await this.repository.likeBlogPost({ postId, userId });
+      return blogPost;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Unable to like blog post!');
+    }
+  }
 }
 
 module.exports = BlogService;
