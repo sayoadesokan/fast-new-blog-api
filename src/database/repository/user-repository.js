@@ -43,12 +43,12 @@ class UserRepository {
     try {
       const { firstName, UserId } = userInput;
       const currentUser = await this.model.User.findByPk(UserId);
-      const toFollowUser = await this.model.User.findOne({
+      const userToFollow = await this.model.User.findOne({
         where: {
           firstName,
         },
       });
-      currentUser.addUser(toFollowUser);
+      currentUser.addUser(userToFollow);
       return currentUser.getUser();
     } catch (error) {
       console.error(error);

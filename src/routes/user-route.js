@@ -1,6 +1,6 @@
 const express = require("express");
-import { body, validationResult } from "express-validator";
-import { handleInputErrors } from "../middleware/middleware";
+const { body, validationResult } = require("express-validator");
+const {handleInputErrors} = require("../middleware/middleware");
 const {
   signUp,
   createUser,

@@ -3,7 +3,7 @@ const { registerContact } = require("../controller/contactinfo-controller");
 const { Authenticate } = require("../middleware/auth");
 const { handleInputErrors } = require("../middleware/middleware");
 const route = express.Router();
-import { body } from "express-validator";
+const {body} = require("express-validator");
 
 route
   .use(Authenticate)
