@@ -48,7 +48,7 @@ class UserRepository {
           firstName,
         },
       });
-      currentUser.addUser(userToFollow);
+      currentUser.addUser(userToFollow); //this is an inbuilt sequelize function that makes you "add a user", makes many to many relationship easier (check docs)
       return currentUser.getUser();
     } catch (error) {
       console.error(error);
