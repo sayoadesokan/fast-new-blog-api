@@ -38,4 +38,18 @@ module.exports.associations = (sequelize) => {
     foreignKey: 'FollowedId',
     through: 'Follow',
   });
+  
+  blogpost.belongsToMany(user, {
+      through: 'Likes',
+      as: 'LikedBy',
+      foreignKey: 'BlogPostId',
+    });
+    
+    user.belongsToMany(blogpost, {
+        through: 'Likes',
+        as: 'Liked',
+        foreignKey: 'UserId',
+    });
 };
+
+
