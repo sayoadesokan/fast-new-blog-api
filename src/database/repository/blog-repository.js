@@ -1,4 +1,5 @@
-const BlogPost = require('../models/BlogPost');
+const e = require("express");
+const BlogPost = require("../models/BlogPost");
 
 class BlogRespository {
   constructor(sequelize) {
@@ -16,6 +17,28 @@ class BlogRespository {
     });
 
     return blog;
+  }
+
+  async likeBlogPost({ postId, userId }) {
+    const blogPost = await this.model.BlogPost.findByPk(postId);
+    const currentUser = await this.model.User.findByPk(userId);
+    const existingLike = await this.model.Likes.findOne({
+      where: {
+        UserId: userId,
+        BlogPostId: postId,
+      },
+    });
+
+    if (existingLike) {
+      // User has already liked the post, handle unlike
+      await currentUser.removeLiked(blogPost);
+      blogPost.likes -= 1;
+      await blogPost.save();
+    } else {
+      await currentUser.addLiked(blogPost);
+      blogPost.likes += 1;
+      await blogPost.save();
+    }
   }
 }
 

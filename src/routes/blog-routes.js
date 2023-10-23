@@ -1,8 +1,8 @@
 const express = require("express");
-const {body} = require("express-validator");
-const {handleInputErrors} = require("../middleware/middleware");
+const { body } = require("express-validator");
+const { handleInputErrors } = require("../middleware/middleware");
 const { Authenticate } = require("../middleware/auth");
-const { createBlog } = require("../controller/blog-controller");
+const { createBlog, likeBlogPost } = require("../controller/blog-controller");
 const route = express.Router();
 
 route
@@ -17,6 +17,16 @@ route
       .withMessage("Title is required"),
     handleInputErrors,
     createBlog
+  )
+  .post(
+    "/like",
+    body("postId")
+      .trim()
+      .isString()
+      .notEmpty()
+      .withMessage("PostId is required"),
+    handleInputErrors,
+    likeBlogPost
   );
 
 module.exports = route;

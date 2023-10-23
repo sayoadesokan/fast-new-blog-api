@@ -4,8 +4,9 @@ const {
   POSTGRES_HOST,
   POSTGRES_USER,
   POSTGRES_PASSWORD,
-} = require('../config');
-const { associations } = require('./models/Associations');
+  POSTGRES_PORT,
+} = require("../config");
+const { associations } = require("./models/Associations");
 
 const sequelize = new Sequelize(
   POSTGRES_DATABASE,
@@ -13,6 +14,7 @@ const sequelize = new Sequelize(
   POSTGRES_PASSWORD,
   {
     host: POSTGRES_HOST,
+    port: POSTGRES_PORT,
     dialect: 'postgres',
   }
 );

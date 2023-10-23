@@ -62,7 +62,8 @@ class UserService {
     }
   }
 
-  async followUser(userInput) {
+  async followUser(userInput) 
+  {
     try {
       const { firstName, UserId } = userInput;
       const user = await this.repository.followUser({ firstName, UserId });

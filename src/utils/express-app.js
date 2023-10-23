@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const userRouter = require('../routes/user-route');
 const contactRouter = require('../routes/contactinfo-routes');
 const blogRouter = require('../routes/blog-routes');
-
+const morgan = require("morgan");
 module.exports = async (app) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -15,6 +15,7 @@ module.exports = async (app) => {
       origin: '*',
     })
   );
+  app.use(morgan("dev"));
 
   app.use(helmet());
   app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
