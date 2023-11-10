@@ -1,0 +1,43 @@
+name: Fast New Blog
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src/
+    strategy:
+      matrix:
+        node-version: [14]
+
+    env:
+      MODE: 'dev'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Run Code
+        run: |
+          npm run start
+
+      - name: Approval
+        if: success()
+        run: echo "Code executed successfully. Approve the changes."
